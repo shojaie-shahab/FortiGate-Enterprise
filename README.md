@@ -1,341 +1,254 @@
-# FortiGate-Enterprise
+# FortiGate NSE4 Practical Lab & Documentation
 
+A complete hands-on FortiGate learning repository based on FortiOS concepts, NSE4 topics, and real-world enterprise scenarios.
 
-## لابراتوار پیشنهادی
+# About This Project
 
-* ۱ عدد FortiGate VM
-* ۱ عدد Windows Server
-* ۲ عدد Windows Client
-* ۱ عدد Kali Linux
-* ۱ عدد Ubuntu Server
-* در صورت امکان یک FortiAnalyzer VM
+این پروژه یک مرجع جامع آموزشی و عملی برای یادگیری **FortiGate** و **FortiOS** است که با هدف ایجاد یک مسیر کامل از یادگیری مفاهیم پایه تا پیاده‌سازی سناریوهای واقعی شبکه و امنیت طراحی شده است.
 
-حداقل ۴ شبکه ایجاد کن:
+برخلاف منابعی که فقط بر روی مباحث تئوری یا آمادگی آزمون تمرکز دارند، این Repository تلاش می‌کند ارتباط بین **دانش مفهومی، طراحی شبکه، پیاده‌سازی عملی و عیب‌یابی در محیط واقعی** را برقرار کند.
 
-* WAN
-* LAN
-* DMZ
-* Guest
+در این پروژه ابتدا معماری داخلی FortiGate، نحوه عملکرد FortiOS، ساختار پردازش Traffic، مفاهیم Firewall، Routing، NAT، VPN، Security Profileها و سایر قابلیت‌های اصلی بررسی می‌شوند.
+
+پس از یادگیری مفاهیم، همان موضوعات در قالب سناریوهای عملی در محیط Lab پیاده‌سازی می‌شوند تا کاربر بتواند فرآیند واقعی طراحی، تنظیم، تست و Troubleshooting یک FortiGate را تجربه کند.
 
 
 
-# سناریو ۱: نصب و راه‌اندازی اولیه
+# Project Philosophy
 
-### هدف
+هدف اصلی این پروژه فقط آمادگی برای آزمون **NSE4** نیست؛ بلکه ایجاد یک مسیر یادگیری کاربردی برای افرادی است که قصد دارند مهارت‌های لازم برای کار با تجهیزات امنیت شبکه Fortinet را در محیط‌های سازمانی به دست آورند.
 
-آشنایی کامل با GUI و CLI
+ساختار پروژه بر اساس یک روش یادگیری مرحله‌ای طراحی شده است:
 
-### موارد آموزشی
+1. ابتدا مفاهیم پایه و معماری FortiGate یاد گرفته می‌شوند.
+2. سپس قابلیت‌های مختلف FortiOS به‌صورت تئوری بررسی می‌شوند.
+3. در ادامه هر مفهوم در قالب یک سناریوی عملی پیاده‌سازی می‌شود.
+4. در نهایت فرآیند Monitoring و Troubleshooting برای تحلیل مشکلات بررسی می‌شود.
 
-* نصب FortiGate VM
-* Interface
-* Static Route
-* Default Gateway
-* DNS
-* Admin
-* Backup و Restore
-* Firmware
-* Time/NTP
-
-### توپولوژی
-
-```
-Internet
-     |
-FortiGate
-     |
- Windows Client
-```
-
-### در پایان باید بتوانی
-
-* به اینترنت وصل شوی.
-* از CLI و GUI کار کنی.
-* Backup بگیری.
-* Firmware را ارتقا دهی.
-
-
-
-# سناریو ۲: Firewall Policy
-
-### هدف
-
-مهم‌ترین بخش NSE4
-
-### یاد می‌گیری
-
-* Policy
-* NAT
-* VIP
-* Schedule
-* Service
-* Address Object
-* Address Group
-
-### توپولوژی
-
-```
-LAN ---- FortiGate ----- WAN
-```
-
-تمرین
-
-* فقط HTTP مجاز باشد.
-* HTTPS مسدود شود.
-* فقط یک IP اینترنت داشته باشد.
-* اینترنت فقط در ساعات اداری فعال باشد.
-
-
-
-# سناریو ۳: NAT و VIP
-
-### هدف
-
-Port Forward
-
-### توپولوژی
-
-```
-Internet
-      |
-FortiGate
-      |
- Web Server
-```
-
-پیاده‌سازی
-
-* Web Server
-* SSH
-* RDP
-* Static NAT
-* VIP
-
-تمرین
-
-از اینترنت وارد وب‌سرور شو.
-
-
-
-# سناریو ۴: User Authentication
-
-### یاد می‌گیری
-
-* Local User
-* LDAP
-* RADIUS
-* FSSO
-* Captive Portal
-
-تمرین
-
-* اینترنت بدون Login قطع باشد.
-* کاربران بعد از Login اینترنت داشته باشند.
-
-
-
-# سناریو ۵: SSL VPN
-
-از محبوب‌ترین بخش‌های NSE4
-
-### توپولوژی
-
-```
-Laptop
-   |
-Internet
-   |
-FortiGate
-   |
-LAN
-```
-
-یاد می‌گیری
-
-* SSL VPN
-* Tunnel
-* Web Mode
-* Split Tunnel
-* Full Tunnel
-* MFA
-
-تمرین
-
-از بیرون وارد شبکه شو.
-
-
-
-# سناریو ۶: IPS و Antivirus
-
-### راه‌اندازی
-
-* IPS
-* AV
-* Application Control
-* Web Filter
-* DNS Filter
-
-تمرین
-
-* حمله Nmap
-* حمله SQL Injection
-* دانلود فایل آلوده
-
-ببین FortiGate چه رفتاری دارد.
+این روش باعث می‌شود کاربر فقط با نحوه تنظیم یک قابلیت آشنا نشود، بلکه دلیل استفاده، نحوه عملکرد و جایگاه آن در معماری شبکه را نیز درک کند.
 
 ---
 
-# سناریو ۷: Routing
+# Project Contents
 
-### یادگیری
+این Repository شامل دو بخش اصلی است:
 
-* Static Route
-* Policy Route
-* ECMP
-* SD-WAN
-* OSPF
-* BGP (مقدماتی)
+1. **Theory & Documentation**
+   
+   شامل مستندات آموزشی و مفهومی FortiGate که تمام قابلیت‌های اصلی FortiOS را پوشش می‌دهد.
 
-توپولوژی
+2. **Hands-on Labs**
+   
+   شامل سناریوهای عملی که در محیط آزمایشگاهی پیاده‌سازی، تست و مستندسازی شده‌اند.
 
-```
-ISP1
-    \
-     FortiGate
-    /
-ISP2
-```
+ارتباط بین این دو بخش باعث می‌شود هر مفهوم تئوری بلافاصله در یک محیط عملی بررسی شود و دانش ایجاد شده به مهارت قابل استفاده در محیط کاری تبدیل شود.
 
-تمرین
+<br><br>
+---
 
-Failover انجام بده.
+<details>
+
+<summary>
+<b>📖 Theory & Documentation (00-Review-Concept)</b>
+<br>
+
+<span style="color:#0969da;">
+🔽 برای مشاهده جزئیات کلیک کنید
+</span>
+
+</summary>
+
+<br>
+
+این بخش شامل مستندات آموزشی و مفهومی FortiGate است.
+
+در این قسمت معماری، قابلیت‌ها و مفاهیم اصلی FortiOS قبل از ورود به سناریوهای عملی بررسی می‌شوند.
+
+هدف این بخش:
+
+- درک معماری داخلی FortiGate
+- شناخت نحوه پردازش Packet و Traffic
+- یادگیری مفاهیم Firewall
+- آشنایی با Routing و NAT
+- شناخت Security Profileها
+- درک VPN، HA، SD-WAN و سایر قابلیت‌های FortiGate
+
+محتوای این بخش شامل ۲۰ فصل اصلی است:
+
+- Fortinet & FortiGate Fundamentals
+- Deployment & Initial Setup
+- Routing
+- Firewall
+- NAT
+- Authentication
+- VPN
+- SD-WAN
+- Security Profiles
+- High Availability
+- Logging & Monitoring
+- Security Fabric
+- Switching
+- Wireless
+- Web Proxy
+- Certificates
+- VDOM
+- Traffic Shaping & QoS
+- Automation
+- Troubleshooting
 
 
-
-# سناریو ۸: High Availability
-
-### دو FortiGate
-
-```
-FGT1
-   ||
-FGT2
-```
-
-یادگیری
-
-* Active-Passive
-* Heartbeat
-* Sync
-* Failover
-
-تمرین
-
-یکی را خاموش کن.
-
-ببین شبکه قطع نشود.
+➡️ [مشاهده Documentation](./Lab00-Review-Concept/README.md)
 
 
+<br>
 
-# سناریو ۹: Logging
-
-یادگیری
-
-* Local Log
-* Syslog
-* FortiAnalyzer
-* Event Log
-* Traffic Log
-
-تمرین
-
-تمام رخدادها را تحلیل کن.
-
-
-# سناریو ۱۰: SD-WAN
-
-دو اینترنت
-
-```
-ISP1
-   \
-    FortiGate
-   /
-ISP2
-```
-
-یادگیری
-
-* SLA
-* Health Check
-* Priority
-* Load Balance
-
-تمرین
-
-اگر ISP1 قطع شد، ترافیک از ISP2 عبور کند.
+<div align="center">
 
 
 
-# سناریو ۱۱: Site-to-Site IPsec VPN
+</div>
 
-```
-Branch -------- Internet -------- HQ
-```
-
-یادگیری
-
-* Phase1
-* Phase2
-* Route
-* Policy
-
-تمرین
-
-دو شبکه همدیگر را Ping کنند.
+</details>
 
 
+<br>
 
-# سناریو ۱۲: پروژه نهایی (ترکیبی)
 
-این سناریو تقریباً همه مباحث NSE4 را پوشش می‌دهد.
+<details>
 
-```
-                 Internet
-                     |
-          ISP1                 ISP2
-             \                 /
-              \               /
-             +----------------+
-             |   FortiGate    |
-             +----------------+
-          /         |          \
-       LAN        DMZ        Guest
-        |           |           |
-   Windows PC   Web Server   WiFi Users
-        |
-   Active Directory
-```
+<summary>
+<b>🧪 Hands-on Labs (Practical Scenarios)</b>
+<br>
 
-در این پروژه باید پیاده‌سازی کنی:
+<span style="color:#0969da;">
+🔽 برای مشاهده سناریوهای عملی کلیک کنید
+</span>
 
-* Interface
-* VLAN
-* DHCP
-* DNS
-* NAT
-* VIP
-* Firewall Policy
-* Static Route
-* SD-WAN
-* SSL VPN
-* IPsec VPN
-* IPS
-* Antivirus
-* Web Filter
-* Application Control
-* User Authentication
-* LDAP
-* Logging
-* Backup
-* HA 
+</summary>
+
+<br>
+
+این بخش شامل سناریوهای عملی پیاده‌سازی شده در محیط Lab است.
+
+تمامی سناریوهای این بخش توسط پیاده‌سازی واقعی در محیط آزمایشگاهی انجام شده‌اند و هدف آن‌ها تبدیل دانش تئوری به تجربه عملی است.
+
+هر سناریو شامل:
+
+- طراحی توپولوژی
+- معرفی تجهیزات مورد نیاز
+- آدرس‌دهی شبکه
+- تنظیمات FortiGate
+- مراحل اجرای سناریو
+- بررسی نتیجه
+- تست عملکرد
+- مستندسازی کامل مراحل
+
+
+سناریوهای عملی پروژه:
+
+| شماره | سناریو |
+|---|---|
+| [Lab01](./Lab01-Initial-Setup/) | Initial Setup |
+| [Lab02](./Lab02-Firewall-Policy/) | Firewall Policy |
+| [Lab03](./Lab03-Routing/) | Routing |
+| [Lab04](./Lab04-NAT-and-VIP/) | NAT and VIP |
+| [Lab05](./Lab05-User-Authentication/) | User Authentication |
+| [Lab06](./Lab06-VPN-Remote%20Accesc/) | VPN Remote Access |
+| [Lab07](./Lab07-IPS,%20Antivirus,%20Application%20Control%20and%20Web%20Filtering/) | IPS, Antivirus, Application Control and Web Filtering |
+| [Lab08](./Lab08-Routing,SD-WAN%20and%20Dynamic%20Routing/) | Routing, SD-WAN and Dynamic Routing |
+| [Lab09](./Lab09-FortiGate%20High%20Availability/) | FortiGate High Availability |
+| [Lab10](./Lab10-IPsec%20Site-to-Site%20VPN/) | IPsec Site-to-Site VPN |
+| [Lab11](./Lab11-%20Logging,Monitoring/) | Logging & Monitoring |
+
+
+➡️ [مشاهده Hands-on Labs](./Lab01-Initial-Setup/README.md)
+
+
+<br>
+
+<div align="center">
+
+
+
+</div>
+
+</details>
+
+---
+
+
+
+# Environment
+
+سناریوهای این پروژه در محیط Lab پیاده‌سازی شده‌اند.
+
+محیط مورد استفاده:
+
+- EVE-NG
+- VMware
+- FortiGate VM
+- Windows Server
+- Windows Client
+- Ubuntu Server
+- Kali Linux
+
+---
+
+# Goal
+
+هدف نهایی این پروژه ایجاد یک مرجع عملی و آموزشی برای FortiGate است که کاربر بتواند:
+
+- مفاهیم FortiOS را یاد بگیرد.
+- معماری FortiGate را درک کند.
+- سناریوهای واقعی سازمانی را پیاده‌سازی کند.
+- مشکلات شبکه را تحلیل و عیب‌یابی کند.
+- برای مسیر شغلی Network Security آماده شود.
+
+
+
+
+<br><br><br><br>
+
+---
+
+# References & Learning Resources
+
+محتوای این Repository بر اساس مستندات رسمی **Fortinet**، راهنماهای آموزشی، Study Guideهای رسمی و Best Practiceهای منتشرشده توسط Fortinet تهیه شده است.
+
+اگر قصد دارید مفاهیم را عمیق‌تر مطالعه کنید یا به جزئیات بیشتری دسترسی داشته باشید، منابع زیر بهترین نقطه شروع خواهند بود.
+
+![](./Lab01-Initial-Setup/assets/resource.jpg)
+
+## Official Fortinet Documentation
+
+- 📘 FortiOS Administration Guide
+  > جامع‌ترین مرجع برای مدیریت، پیکربندی و قابلیت‌های FortiOS.
+
+- 📘 FortiOS CLI Reference
+  > مرجع کامل تمامی دستورات CLI در FortiOS.
+
+- 📘 FortiOS New Features Guide
+  > معرفی قابلیت‌های جدید هر نسخه از FortiOS.
+
+- 📘 FortiOS Release Notes
+  > تغییرات، رفع اشکال‌ها، محدودیت‌ها و نکات مربوط به هر نسخه.
+
+---
+
+## Best Practices & Design Guides
+
+- 📗 FortiGate Best Practices Guide
+- 📗 FortiGate Security Rating Guide
+- 📗 FortiGate Hardening Guide
+- 📗 FortiGate Cookbook
+  > مجموعه‌ای از سناریوهای عملی و نمونه پیاده‌سازی‌های FortiGate.
+
+
+
+## Official Documentation Portal
+
+تمامی مستندات رسمی، راهنماها، Release Notes و Study Guideهای منتشرشده توسط Fortinet از طریق پورتال مستندات رسمی در دسترس هستند.
+
+➡️ https://docs.fortinet.com
+
+---
