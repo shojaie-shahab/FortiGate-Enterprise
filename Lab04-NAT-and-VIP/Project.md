@@ -2006,7 +2006,7 @@ Computer:
 
 📸 Screenshot
 
-![S04-39-Internal-RDP-Test.png](./assets/S04-52-External-RDP-Test.png)
+![S04-39-Internal-RDP-Test.png](./assets/S04-39-Internal-RDP-Test.png)
 
 
 
